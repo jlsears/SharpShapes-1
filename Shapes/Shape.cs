@@ -14,10 +14,12 @@ namespace Shapes
         Color fillColor;
         Color borderColor;
 
-        public Color FillColor { get; }
-        public Color BorderColor { get; }
+        public Color FillColor { get; set; }
+        public Color BorderColor { get; set; }
 
-        public float Area() { throw new NotImplementedException(); }
-        public float Perimeter() { throw new NotImplementedException(); }
+        public abstract float Area();
+
+
+        public abstract float Perimeter();
     }
 }
