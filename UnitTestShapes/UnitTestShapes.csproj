@@ -53,11 +53,11 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="AbstractShapeTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuadrilateralTests.cs" />
     <Compile Include="RectangleTest.cs" />
     <Compile Include="SquareTest.cs" />
+    <Compile Include="ShapeTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Shapes\Shapes.csproj">

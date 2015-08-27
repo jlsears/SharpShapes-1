@@ -1,29 +1,74 @@
 ﻿using System;
+using Shapes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Shapes; //added this
 
 namespace UnitTestShapes
 {
     [TestClass]
     public class QuadrilateralTests
     {
-        public class QuadTestClass : Quadrilateral
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestQuadHasDefaultSize()
         {
-            public override float Area()
-            {
-                throw new NotImplementedException();
-            }
+            Quadrilateral myquad = new Quadrilateral();
+            myquad.Perimeter();
         }
 
         [TestMethod]
-        public void TestQuadrilateralCanComputePerimeter()
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestQuadNoNegativeSides()
         {
-            QuadTestClass myQuadrilatral = new QuadTestClass();
-            myQuadrilatral.Side1 = 2;
-            myQuadrilatral.Side2 = 4;
-            myQuadrilatral.Side3 = 99;
-            myQuadrilatral.Side4 = 6;
-            Assert.AreEqual(myQuadrilatral.Perimeter(), 111);
+            Quadrilateral myquad = new Quadrilateral();
+            myquad.Top = 2;
+            myquad.Right = 2;
+            myquad.Left = -2;
+            myquad.Bottom = 2;
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestQuadNoNegativeSidesInConstructor()
+        {
+            Quadrilateral myquad = new Quadrilateral(2, -2, 2, 2);
+        }
+
+        [TestMethod]
+        public void TestQuadCanComputePerimeter()
+        {
+            Quadrilateral myquad = new Quadrilateral();
+            myquad.Top = 2;
+            myquad.Right = 2;
+            myquad.Left = 2;
+            myquad.Bottom = 2;
+            Assert.AreEqual(8, myquad.Perimeter());
+        }
+
+        [TestMethod]
+        public void TestQuadCanComputePerimeter2()
+        {
+            Quadrilateral myquad = new Quadrilateral(2, 2, 2, 2);
+            Assert.AreEqual(8, myquad.Perimeter());
+        }
+
+        [TestMethod]
+        public void TestQuadPerimetersAreTheSame()
+        {
+            Quadrilateral myquad1 = new Quadrilateral();
+            myquad1.Top = 2;
+            myquad1.Right = 2;
+            myquad1.Left = 2;
+            myquad1.Bottom = 2;
+            Quadrilateral myquad2 = new Quadrilateral(2, 2, 2, 2);
+            Assert.AreEqual(myquad1.Perimeter(), myquad2.Perimeter());
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(NotImplementedException))]
+        public void TestQuadCanComputeArea()
+        {
+            Quadrilateral myquad = new Quadrilateral();
+            myquad.Area();
         }
     }
 }
