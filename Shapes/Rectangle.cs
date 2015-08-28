@@ -11,7 +11,7 @@ namespace Shapes
         public float height { get; set; }
         public float width { get; set; }
 
-    public override float Area() 
+        public override float Area() 
         {
             return this.height * this.width;
         }

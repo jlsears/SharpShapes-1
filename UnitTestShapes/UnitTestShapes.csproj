@@ -58,6 +58,8 @@
     <Compile Include="RectangleTest.cs" />
     <Compile Include="SquareTest.cs" />
     <Compile Include="ShapeTest.cs" />
+    <Compile Include="Rectangle2Test.cs" />
+    <Compile Include="Square2Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Shapes\Shapes.csproj">

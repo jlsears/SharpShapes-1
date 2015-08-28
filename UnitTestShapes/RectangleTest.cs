@@ -19,7 +19,7 @@ namespace UnitTestShapes
         [TestMethod]
         public void TestRectangleCalcArea()
         {
-            RectangleTestClass myRec = new RectangleTestClass();
+            Rectangle myRec = new Rectangle();
             myRec.height = 2;
             myRec.width = 3;
             Assert.AreEqual(myRec.Area(), 6);
