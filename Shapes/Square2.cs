@@ -9,15 +9,22 @@ namespace Shapes
     public class Square2 : Quadrilateral
     {
 
-        public Square2()
+        public Square2() : base()
         {
         }
 
-        public Square2(float Top, float Right) { }
+        public Square2(float Top) : base() { }
 
         public override float Area()
         {
-            return this.Top * 2;
+            if (Top == 0.0)
+            {
+                throw new ArgumentException();
+            }
+            else
+            {
+                return this.Top * 2;
+            }
         }
     }
 }
