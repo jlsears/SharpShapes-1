@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace Shapes
 {
@@ -13,7 +14,8 @@ namespace Shapes
         private float left;
         private float right;
 
-        public float Top {
+        public float Top
+        {
 
             get { return top; }
 
@@ -31,22 +33,26 @@ namespace Shapes
         }
 
 
-        public float Bottom {
+        public float Bottom
+        {
 
             get { return bottom; }
 
-            set {
+            set
+            {
                 if (value <= 0.0)
                 {
                     throw new ArgumentException();
-                } else
+                }
+                else
                 {
                     bottom = value;
                 }
-              }
             }
+        }
 
-        public float Left {
+        public float Left
+        {
             get { return left; }
 
             set
@@ -63,7 +69,8 @@ namespace Shapes
         }
 
 
-        public float Right {
+        public float Right
+        {
             get { return right; }
 
             set
@@ -104,6 +111,22 @@ namespace Shapes
 
         }
 
+        public override void Scale(int percent)
+        {
+            if (percent == 0 || percent <= -100)
+            {
+                throw new ArgumentException();
+            }
 
+            this.Top = Top * (100 + percent) / 100;
+            this.Bottom = Bottom * (100 + percent) / 100;
+            this.Left = Left * (100 + percent) / 100;
+            this.Right = Right * (100 + percent) / 100;
+        }
+
+        public override void DrawOnto(Canvas theCanvas, int x, int y)
+        {
+            base.DrawOnto(theCanvas, x, y);
+        }
     }
 }

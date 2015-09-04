@@ -5,8 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SharpShapes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" Height="550" Width="575" MinWidth="575" MaxHeight="550">
+
+    <StackPanel Width="auto" Height="auto" >
+        <StackPanel HorizontalAlignment="Center" Width="575" Height="50">
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Width="auto" Height="50">
+                <ComboBox Height="25" Width="125" Margin="5"></ComboBox>
+                <TextBox Height="25" Width="125" Margin="5" Padding="5"></TextBox>
+                <TextBox Height="25" Width="125" Margin="5" Padding="5"></TextBox>
+                <Button Content="Create" Height="25" Width="125" Margin="5" Click="Button_Click"></Button>
+            </StackPanel>
+        </StackPanel>
+        <Canvas Background="Red" Width="auto" Height="523" Margin="0,0,-26,0"></Canvas>
+    </StackPanel>
+
 </Window>
