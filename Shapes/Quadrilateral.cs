@@ -113,11 +113,13 @@ namespace Shapes
 
         public override void Scale(int percent)
         {
+            // Limiting the bounds of the shape
             if (percent == 0 || percent <= -100)
             {
                 throw new ArgumentException();
             }
 
+            // This mathyness: part in parens equivalent to 1.05 for 5%, 1.20 for 20%, etc.
             this.Top = Top * (100 + percent) / 100;
             this.Bottom = Bottom * (100 + percent) / 100;
             this.Left = Left * (100 + percent) / 100;

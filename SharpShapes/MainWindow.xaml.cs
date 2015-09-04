@@ -25,6 +25,8 @@ namespace SharpShapes
             InitializeComponent();
         }
 
+        // In xaml: Click="Button_Click"
+
         private void Button_Click (object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Button Clicked!");

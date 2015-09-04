@@ -11,6 +11,7 @@ namespace Shapes
 
         public Square2(float sideLength) : base(sideLength, sideLength) {
 
+            // Note the beauty and ease of not writing anything here because inheritance
         }
 
         }

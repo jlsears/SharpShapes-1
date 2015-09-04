@@ -63,7 +63,7 @@ namespace UnitTestShapes
             Assert.AreEqual(myquad1.Perimeter(), myquad2.Perimeter());
         }
 
-        [TestMethod]
+        [TestMethod] // Note the "ExpectedException" here
         [ExpectedException(typeof(NotImplementedException))]
         public void TestQuadCanComputeArea()
         {
@@ -71,7 +71,7 @@ namespace UnitTestShapes
             myquad.Area();
         }
 
-        [TestMethod]
+        [TestMethod] // Outputs are 3 because: 2 + 1 (50% of 2) = 3
         public void QuadScalingUpTest()
         {
             Quadrilateral myquad = new Quadrilateral(2, 2, 2, 2);
@@ -86,6 +86,7 @@ namespace UnitTestShapes
         public void QuadScaleDownTest()
         {
             // Negative scaling
+            // Likewise, 10 - 5 (50% of 10) = 5
             Quadrilateral myquad = new Quadrilateral(10, 10, 10, 10);
             myquad.Scale(-50);
             Assert.AreEqual(5, myquad.Top);
