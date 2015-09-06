@@ -8,15 +8,32 @@
         Title="MainWindow" Height="550" Width="575" MinWidth="575" MaxHeight="550">
 
     <StackPanel Width="auto" Height="auto" >
+        <StackPanel.Resources>
+            <DataTemplate x:Key="ShapeNameTemplate">
+                <Label Content="{Binding XPath=@Name}" />
+                
+            </DataTemplate>
+            <XmlDataProvider x:Key="ShapeDataSource" XPath="Shapes">
+                <x:XData>
+                    <Shapes xmlns="">
+                        <Shape Name ="Square" />
+                    </Shapes>
+                </x:XData>
+            </XmlDataProvider>
+        </StackPanel.Resources>
         <StackPanel HorizontalAlignment="Center" Width="575" Height="50">
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Width="auto" Height="50">
-                <ComboBox Height="25" Width="125" Margin="5"></ComboBox>
-                <TextBox Height="25" Width="125" Margin="5" Padding="5"></TextBox>
-                <TextBox Height="25" Width="125" Margin="5" Padding="5"></TextBox>
+                <!--the combo1 here is where the repeat-binding action is happening-->
+                <ComboBox x:Name="combo1" Height="25" Width="125" Margin="5" SelectionChanged="combo1_SelectionChanged">
+                    <!--<ComboBoxItem>Square</ComboBoxItem>
+                    <ComboBoxItem>Rectangle</ComboBoxItem>-->
+                </ComboBox>
+                <TextBox x:Name="shapeWidth" Height="25" Width="125" Margin="5" Padding="5"></TextBox>
+                <TextBox x:Name="shapeHeight" Height="25" Width="125" Margin="5" Padding="5"></TextBox>
                 <Button Content="Create" Height="25" Width="125" Margin="5" Click="Button_Click"></Button>
             </StackPanel>
         </StackPanel>
-        <Canvas Background="Red" Width="auto" Height="523" Margin="0,0,-26,0"></Canvas>
+        <Canvas x:Name="canvas" Background="Red" Width="auto" Height="500"></Canvas>
     </StackPanel>
 
 </Window>

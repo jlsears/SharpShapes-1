@@ -17,6 +17,12 @@ namespace Shapes
             Right = height;
         }
 
+        /// <summary>
+        ///  Calculate Area for a Shape
+        /// </summary>
+        /// <returns>Area as a float</returns>
+
+
         public override float Area()
         {
             if (Top == 0.0 || Right == 0.0)

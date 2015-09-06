@@ -1,6 +1,8 @@
 ﻿using System;
-using System.Drawing;
+using System.Windows.Media;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
+using System.Reflection;
 
 namespace UnitTestShapes
 {
@@ -11,8 +13,8 @@ namespace UnitTestShapes
         {
             public ConcreteShape()
             {
-                BorderColor = Color.NavajoWhite;
-                FillColor = Color.PapayaWhip;
+                BorderColor = Colors.NavajoWhite;
+                FillColor = Colors.PapayaWhip;
             }
         }
 
@@ -20,14 +22,14 @@ namespace UnitTestShapes
         public void TestAbstractShapeHasBorderColor()
         {
             ConcreteShape cs = new ConcreteShape();
-            Assert.AreEqual(Color.NavajoWhite, cs.BorderColor);
+            Assert.AreEqual(Colors.NavajoWhite, cs.BorderColor);
         }
 
         [TestMethod]
         public void TestAbstractShapeHasFillColor()
         {
             ConcreteShape cs = new ConcreteShape();
-            Assert.AreEqual(Color.PapayaWhip, cs.FillColor);
+            Assert.AreEqual(Colors.PapayaWhip, cs.FillColor);
         }
 
         [TestMethod]
@@ -44,6 +46,25 @@ namespace UnitTestShapes
         {
             ConcreteShape cs = new ConcreteShape();
             cs.Perimeter();
+        }
+
+        [TestMethod] // Make sure what you think and what system thinks is the same thing
+        public void FindShapesTest()
+        {
+            List<string> classes = new List<string> { "Square", "Rectangle", "Shape" };
+            CollectionAssert.AreEqual(classes, Assembly.GetAssembly(typeof(Shapes.Shape)).GetTypes());
+        }
+
+        [TestMethod]
+        public void TestSquareIsASubclassOfRectangle2()
+        {
+            Assert.IsTrue(typeof(Shapes.Square2).IsSubclassOf(typeof(Shapes.Rectangle2)));
+        }
+
+        [TestMethod]
+        public void TestSquareIsASubclassQuadrilateral()
+        {
+            Assert.IsTrue(typeof(Shapes.Square).IsSubclassOf(typeof(Shapes.Quadrilateral)));
         }
 
     }

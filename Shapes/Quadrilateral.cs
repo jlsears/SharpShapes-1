@@ -4,6 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Shapes;
+using System.Windows.Media; // How we get our brushes
+//using System.Drawing;
+using System.Windows;
 
 namespace Shapes
 {
@@ -126,9 +130,32 @@ namespace Shapes
             this.Right = Right * (100 + percent) / 100;
         }
 
+        public Polygon CreatePolygon()
+        {
+            Polygon poly = new Polygon();
+            // SolidBrush b = 
+            poly.Fill = new SolidColorBrush(this.FillColor);
+            poly.Stroke = new SolidColorBrush(this.BorderColor);
+            poly.StrokeThickness = 2;
+            return poly;
+        }
+
         public override void DrawOnto(Canvas theCanvas, int x, int y)
         {
-            base.DrawOnto(theCanvas, x, y);
+            Polygon myPolygon = CreatePolygon();
+            Point p1 = new Point(x, y);
+            Point p2 = new Point(x, y + this.Left); // Or this.Right
+            Point p3 = new Point(x + this.Bottom, y + Right);
+            Point p4 = new Point(x + this.Top, y);
+            PointCollection myPoints = new PointCollection();
+            myPoints.Add(p1); // Need to have points to add to collection
+            myPoints.Add(p2);
+            myPoints.Add(p3);
+            myPoints.Add(p4); // Adding them to collection below
+            myPolygon.Points = myPoints;
+
+            // Calling this method draws the polygon on the canvas
+            theCanvas.Children.Add(myPolygon);
         }
     }
 }

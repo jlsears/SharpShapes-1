@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Drawing;
+using System.Windows.Media;
 using System.Windows.Controls;
 
 
@@ -25,8 +25,9 @@ namespace Shapes
         // Comes from the ConcreteSHape class in ShapeTest
         public Shape()
         {
-            BorderColor = Color.NavajoWhite;
-            FillColor = Color.PapayaWhip;
+            // Had to change from Color to Colors because of using change to Media
+            BorderColor = Colors.NavajoWhite;
+            FillColor = Colors.PapayaWhip;
         }
 
         public virtual void DrawOnto(Canvas theCanvas, int x, int y) { throw new NotImplementedException(); }
