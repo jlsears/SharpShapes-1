@@ -143,18 +143,20 @@ namespace Shapes
         public override void DrawOnto(Canvas theCanvas, int x, int y)
         {
             Polygon myPolygon = CreatePolygon();
+            // Essentially we are a) first assigning point locations...
             Point p1 = new Point(x, y);
             Point p2 = new Point(x, y + this.Left); // Or this.Right
             Point p3 = new Point(x + this.Bottom, y + Right);
             Point p4 = new Point(x + this.Top, y);
             PointCollection myPoints = new PointCollection();
+            // And then b) actually adding point locations
             myPoints.Add(p1); // Need to have points to add to collection
             myPoints.Add(p2);
             myPoints.Add(p3);
             myPoints.Add(p4); // Adding them to collection below
             myPolygon.Points = myPoints;
 
-            // Calling this method draws the polygon on the canvas
+            // Then c), calling this method which draws the polygon on the canvas
             theCanvas.Children.Add(myPolygon);
         }
     }

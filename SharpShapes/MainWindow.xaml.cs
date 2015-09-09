@@ -43,8 +43,9 @@ namespace SharpShapes
         // To do with the number of textboxes that need to be enabled
         // Give me the assembly for the class that matches this className
         public int NumberOfArguments(string className)
-        {
+        {                                                                                                   /*Here's where className comes in*/
             var theClass = Assembly.GetAssembly(typeof(Shapes.Shape)).GetTypes().Where(shapeType => shapeType.Name == className).First();
+            // Immediately referencing the prior variable in this theClassConstructor
             var theClassConstructor = theClass.GetConstructors().First();
             return theClassConstructor.GetParameters().Length;
         }
@@ -56,12 +57,16 @@ namespace SharpShapes
             MessageBox.Show("Button Clicked!");
         }
 
+        // This is kicked off by "Selection Changed" on combo1 in corresponding xaml file
         private void combo1_SelectionChanged (object sender, SelectionChangedEventArgs e)
         {
+            // Saving the name/type of the shape selected in the combobox as a variable
             var classType = combo1.SelectedValue as Type;
             shapeWidth.IsEnabled = true;
             // Check out the argument count to determine if need to enable height
+            // Pulling in the Name of the shape referenced in the above classType variable here
             int argCount = NumberOfArguments(classType.Name);
+            // The height box will be enabled depending upon the result assigned to the argCount variable
             shapeHeight.IsEnabled = (argCount > 1);  // 2nd way: could say "if shapeName Rectangle"
         }
     }
